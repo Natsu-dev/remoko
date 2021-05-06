@@ -1,0 +1,25 @@
+{
+  "name": "remoko",
+  "version": "1.0.0",
+  "description": "WoL via Discord",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^9.0.0",
+    "wake_on_lan": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Natsu-dev/remoko.git"
+  },
+  "author": "Natsu-dev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Natsu-dev/remoko/issues"
+  },
+  "homepage": "https://github.com/Natsu-dev/remoko#readme"
+}
