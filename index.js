@@ -49,6 +49,15 @@ client.on("message", message => {
         return;
     }
 
+    // いちゃいちゃ
+    if (message.content.match(/好き/)) {
+
+        message.channel.send("私も！") //メッセ送信
+            .then(message => console.log('Message: "私も！" sent.'))
+            .catch(console.error);
+        return;
+    }
+
     // コマンド系
     if (message.content.startsWith("%")) {
 
