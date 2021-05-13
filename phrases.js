@@ -11,4 +11,4 @@ exports.goodMorning = "おはよ～";
 exports.loveCall = "私もー！";
 
 // commands
-exports.sendWoL = "は～いWoLね、任せな！";
+exports.sendWol = "は～いWoLね、任せな！";
