@@ -1,28 +1,33 @@
 const path = require('path');
-const Discord = require("discord.js");
+const wol = require('wake_on_lan');
+const Discord = require('discord.js');
 const client = new Discord.Client();
 
-var fs = require('fs');
-var os = require('os'); // ホスト名取得用
+const fs = require('fs');
+const os = require('os'); // ホスト名取得用
 
 require('dotenv').config({ path: path.join(__dirname, '.env') }); // 環境変数に.env使う
 
-var phrases = require("./phrases.js");
+const phrases = require("./phrases.js");
 
 // ログイン処理
-client.on("ready", () => {
-    client.user.setStatus("online"); //online, idle, dnd, invisible
-    client.user.setActivity(os.hostname()); //ステータスメッセージ
+client.on('ready', () => {
+    client.user.setStatus('online') //online, idle, dnd, invisible
+        .then(r => console.log('Status set.'))
+        .catch(console.error);
+    client.user.setActivity(os.hostname()) //ステータスメッセージ
+        .then(r => console.log('Activity set.'))
+        .catch(console.error);
 
-    console.log("ready...");
+    console.log('ready...');
 });
 
-client.on("guildCreate", guild => { // 入室時の挨拶
+client.on('guildCreate', guild => { // 入室時の挨拶
 
     let greetingChannel = "";
     guild.channels.cache.forEach((channel) => {
-        if (channel.type == "text" && greetingChannel == "") {
-            if (channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
+        if (channel.type == 'text' && greetingChannel == "") {
+            if (channel.permissionsFor(guild.me).has('SEND_MESSAGES')) {
                 greetingChannel = channel;
             }
         }
@@ -31,7 +36,7 @@ client.on("guildCreate", guild => { // 入室時の挨拶
 });
 
 // メッセージ受け取り時
-client.on("message", message => {
+client.on('message', message => {
 
     // 自分のだったら無視
     if (message.author.bot) {
@@ -52,8 +57,8 @@ client.on("message", message => {
     // いちゃいちゃ
     if (message.content.match(/好き/)) {
 
-        message.channel.send("私も！") //メッセ送信
-            .then(message => console.log('Message: "私も！" sent.'))
+        message.channel.send(phrases.loveCall) //メッセ送信
+            .then(message => console.log(`Message: ${phrases.loveCall} to ${author}.`))
             .catch(console.error);
         return;
     }
@@ -88,4 +93,6 @@ client.on("message", message => {
     }
 });
 
-client.login(process.env.DISCORD_TOKEN);
+client.login(process.env.DISCORD_TOKEN) // Login phase
+    .then(r => console.log('Login.'))
+    .catch(console.error);

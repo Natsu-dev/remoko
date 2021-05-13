@@ -7,5 +7,8 @@ exports.guildCreateGreeting = "ちっす、Remokoだよ～";
 // greetings
 exports.goodMorning = "おはよ～";
 
+// いちゃいちゃ
+exports.loveCall = "私もー！";
+
 // commands
 exports.sendWoL = "は～いWoLね、任せな！";
