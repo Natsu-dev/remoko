@@ -86,6 +86,13 @@ client.on('message', message => {
                 .catch(console.error);
 
             // Send Wake on LAN (to a specified device)
+            wol.wake(process.env.MAC_ADDRESS_0, function (error) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(`Magic packet sent to ${process.env.MAC_ADDRESS_0}.`);
+                }
+            });
 
             return;
         }
