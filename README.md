@@ -9,4 +9,4 @@ WoL via Discord
 - `npm install wake_on_lan`
 - Edit `.env.sample` and rename it `.env`
 - Run `node index.js` on Terminal
-- Optionally, edit crontab in order to run `index.js` @reboot
+- Optionally, edit crontab in order to run `index.js` with forever @reboot
